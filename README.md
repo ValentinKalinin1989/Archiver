@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/ValentinKalinin1989/Archiver.svg?branch=master)](https://travis-ci.org/ValentinKalinin1989/Archiver)
-
+[![codecov](https://codecov.io/gh/ValentinKalinin1989/Archiver/branch/master/graph/badge.svg)](https://codecov.io/gh/ValentinKalinin1989/Archiver)
 <h1>Archiver</h1>
     <h6>Простой архиватор, выполняющий две команды:</h6>
         <li> распаковка выбранных архивов в директорию, из которой была запущена программа;</li>
