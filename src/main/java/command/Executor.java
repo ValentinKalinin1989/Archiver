@@ -1,19 +1,22 @@
 package command;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * выполняет метод execute для классов реализующих интерфейс Command,
  * выбирает класс в зависимости от выбранной команды
+ *
+ * @author Valentin
+ * @version 1.00
+ * @since 08/10/2020
  */
 public class Executor {
 
     /**
      * карта, связщывающая имена команд с классами
      */
-    private Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands;
 
     public Executor(Map<String, Command> commands) {
         this.commands = commands;

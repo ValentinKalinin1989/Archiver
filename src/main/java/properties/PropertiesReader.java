@@ -6,17 +6,21 @@ import java.util.List;
 
 /**
  * чтение параметров передаваемых через String[] args
+ *
+ * @author Valentin
+ * @version 1.00
+ * @since 08/10/2020
  */
 public class PropertiesReader {
 
     /**
      * имя команды
      */
-    private String command;
+    private String command = "empty";
     /**
      * список путей к файлам
      */
-    private List<String> pathsList;
+    private List<String> pathsList = new ArrayList<>();
     /**
      * информация об ошибке при чтении параметров
      */
@@ -29,16 +33,11 @@ public class PropertiesReader {
      * @return true - если параметры прочитаны умпешно, иначе - false
      */
     public boolean setPropertyFromArgs(String[] args) {
-        if (args.length < 1) {
+        if (args.length < 2) {
             errorMessage = "Входные параметры отсутствуют.";
             return false;
         } else {
-            if (args[0] == null) {
-                errorMessage = "Не задана команда.";
-                return false;
-            } else {
-                this.command = args[0];
-            }
+            this.command = args[0];
             this.pathsList = new ArrayList<>(Arrays.asList(args).subList(1, args.length));
             return true;
         }

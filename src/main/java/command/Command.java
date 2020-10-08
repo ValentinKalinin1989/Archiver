@@ -4,6 +4,10 @@ import java.util.List;
 
 /**
  * интерфейс для посторения исполняемых команд
+ *
+ * @author Valentin
+ * @version 1.00
+ * @since 08/10/2020
  */
 public interface Command {
     /**

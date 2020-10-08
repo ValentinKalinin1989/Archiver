@@ -11,6 +11,10 @@ import java.util.Map;
 
 /**
  * основной класс, реализующий работу приложения
+ *
+ * @author Valentin
+ * @version 1.00
+ * @since 08/10/2020
  */
 public class Archiver {
     public static void main(String[] args) {

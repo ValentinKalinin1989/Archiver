@@ -11,8 +11,14 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * реализует архивирование файлов
+ *
+ * @author Valentin
+ * @version 1.00
+ * @since 08/10/2020
  */
 public class Packing implements Command {
+    private static final String FS = File.separator;
+
     /**
      * реализует операцию архивирования файлов
      *
@@ -30,7 +36,11 @@ public class Packing implements Command {
                     .map(File::new)
                     .collect(Collectors.toList());
             for (File file : files) {
-                createZipDir(zipOutputStream, file.listFiles(), "", zipName);
+                if (file.isDirectory()) {
+                    createZipDir(zipOutputStream, file.listFiles(), file.getName() + FS, zipName);
+                } else {
+                    createZipDir(zipOutputStream, new File[]{file}, "", zipName);
+                }
             }
             zipOutputStream.close();
         } catch (IOException e) {
@@ -67,7 +77,7 @@ public class Packing implements Command {
                                      String zipName) throws IOException {
         for (File file : files) {
             if (file.isDirectory()) {
-                createZipDir(zipOutputStream, file.listFiles(), path + file.getName() + File.separator, zipName);
+                createZipDir(zipOutputStream, file.listFiles(), path + file.getName() + FS, zipName);
             } else if (!file.getName().equals(zipName)) {
                 ZipEntry zipEntry = new ZipEntry(path + file.getName());
                 try {
@@ -77,7 +87,7 @@ public class Packing implements Command {
                 }
                 FileInputStream fileInputStream = new FileInputStream(file);
                 byte[] buffer = new byte[1024];
-                int size = -1;
+                int size;
                 while ((size = fileInputStream.read(buffer)) != -1) {
                     zipOutputStream.write(buffer, 0, size);
                 }
