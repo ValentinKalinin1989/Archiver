@@ -3,6 +3,8 @@ language: java
 # версия jdk
 jdk: openjdk11
 
+
+
 # Отправлять уведомление на почту
 notifications:
   email:
@@ -10,3 +12,10 @@ notifications:
       - k-valentin-1989@yandex.ru
     on_success: always
     on_failure: always
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+env:
+  global:
+    - CODECOV_TOKEN="7da0b4cd-d1e4-4c80-9aaf-cc7d09dd882e"
