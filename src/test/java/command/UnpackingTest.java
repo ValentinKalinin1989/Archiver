@@ -48,6 +48,7 @@ public class UnpackingTest {
 
         new File("one.txt").delete();
         new File("fold" + FS + "two.txt").delete();
+        new File("fold").delete();
 
         assertThat(oneStr, is("one"));
         assertThat(twoStr, is("two"));
