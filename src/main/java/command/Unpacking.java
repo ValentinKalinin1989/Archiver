@@ -1,6 +1,9 @@
 package command;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.zip.ZipEntry;
@@ -26,7 +29,10 @@ public class Unpacking implements Command {
 
     @Override
     public String info() {
-        return null;
+        return "Команда для архивирования имеет следующую структуру\n"
+                + "java -jar путь-к-исполняемому-jar-файлу unpacking путь-к-1-ому-архиву путь-к-следущему-архиву\n"
+                + "Например(для Windows):\n"
+                + "java -jar D:\\Archiver-1.0.jar unpacking D:\\first.zip D:\\next.zip\n";
     }
 
     @Override
@@ -46,7 +52,7 @@ public class Unpacking implements Command {
                 ZipEntry zipEntry;
                 while ((zipEntry = zipInputStream.getNextEntry()) != null) {
                     File newFile = new File(destDir, zipEntry.getName());
-                    if(zipEntry.isDirectory()) {
+                    if (zipEntry.isDirectory()) {
                         newFile.mkdirs();
                         continue;
                     }

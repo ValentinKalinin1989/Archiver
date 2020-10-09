@@ -50,7 +50,10 @@ public class Packing implements Command {
 
     @Override
     public String info() {
-        return null;
+        return "Команда для архивирования имеет следующую структуру\n"
+                + "java -jar путь-к-исполняемому-jar-файлу packing имя-архива путь-к-1-ому-файлу-или-папке путь-к-следущему-файлу-или-архиву\n"
+                + "Например(для Windows):\n"
+                + "java -jar D:\\Archiver-1.0.jar packing archiver-name D:\\first D:\\next.text\n";
     }
 
     @Override
