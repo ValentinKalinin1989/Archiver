@@ -46,12 +46,15 @@ public class UnpackingTest {
             e.printStackTrace();
         }
 
-        new File("one.txt").delete();
-        new File("fold" + FS + "two.txt").delete();
-        new File("fold").delete();
+        boolean resultDelFirstFile = new File("one.txt").delete();
+        boolean resultDelSecondFile = new File("fold" + FS + "two.txt").delete();
+        boolean resultDelThirdFile = new File("fold").delete();
 
         assertThat(oneStr, is("one"));
         assertThat(twoStr, is("two"));
+        assertThat(resultDelFirstFile, is(true));
+        assertThat(resultDelSecondFile, is(true));
+        assertThat(resultDelThirdFile, is(true));
 
     }
 
